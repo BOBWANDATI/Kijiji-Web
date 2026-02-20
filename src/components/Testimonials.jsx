@@ -3,116 +3,6 @@ import React, { useState, useEffect } from 'react';
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const styles = {
-    testimonials: {
-      padding: '5rem 0',
-      background: 'var(--primary-white)',
-    },
-    container: {
-      maxWidth: '1280px',
-      margin: '0 auto',
-      padding: '0 2rem',
-    },
-    slider: {
-      maxWidth: '800px',
-      margin: '0 auto',
-      position: 'relative',
-    },
-    slide: {
-      background: 'var(--gray-100)',
-      borderRadius: '2rem',
-      padding: '3rem',
-      textAlign: 'center',
-      position: 'relative',
-      boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-    },
-    quote: {
-      fontSize: '4rem',
-      color: 'var(--primary-red)',
-      opacity: 0.2,
-      position: 'absolute',
-      top: '1rem',
-      left: '2rem',
-      fontFamily: 'serif',
-    },
-    text: {
-      fontSize: '1.25rem',
-      lineHeight: '1.8',
-      color: 'var(--gray-600)',
-      marginBottom: '2rem',
-      position: 'relative',
-      zIndex: 1,
-    },
-    author: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '1rem',
-    },
-    avatar: {
-      width: '4rem',
-      height: '4rem',
-      borderRadius: '50%',
-      objectFit: 'cover',
-    },
-    info: {
-      textAlign: 'left',
-    },
-    name: {
-      fontSize: '1.125rem',
-      fontWeight: '700',
-      color: 'var(--primary-black)',
-      marginBottom: '0.25rem',
-    },
-    role: {
-      color: 'var(--primary-red)',
-      fontSize: '0.875rem',
-    },
-    dots: {
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '0.5rem',
-      marginTop: '2rem',
-    },
-    dot: {
-      width: '0.75rem',
-      height: '0.75rem',
-      borderRadius: '50%',
-      background: 'var(--gray-300)',
-      border: 'none',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-    },
-    dotActive: {
-      background: 'var(--primary-red)',
-      transform: 'scale(1.2)',
-    },
-    arrow: {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      width: '3rem',
-      height: '3rem',
-      borderRadius: '50%',
-      background: 'var(--primary-white)',
-      border: 'none',
-      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-      fontSize: '1.5rem',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      transition: 'all 0.3s ease',
-      zIndex: 2,
-    },
-    prevArrow: {
-      left: '-1.5rem',
-    },
-    nextArrow: {
-      right: '-1.5rem',
-    },
-  };
-
   const testimonials = [
     {
       id: 1,
@@ -154,298 +44,312 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" style={styles.testimonials}>
-      <div style={styles.container}>
+    <section className="testimonials">
+      <div className="testimonials-container">
         <h2 className="section-title">Success Stories</h2>
         
-        <div style={styles.slider}>
+        <div className="testimonials-slider">
           <button
-            style={{...styles.arrow, ...styles.prevArrow}}
+            className="testimonials-arrow testimonials-arrow-left"
             onClick={handlePrev}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--primary-red)';
-              e.currentTarget.style.color = 'var(--primary-white)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'var(--primary-white)';
-              e.currentTarget.style.color = 'var(--primary-black)';
-            }}
+            aria-label="Previous testimonial"
           >
             ‹
           </button>
 
-          <div style={styles.slide}>
-            <div style={styles.quote}>"</div>
-            <p style={styles.text}>{testimonials[currentIndex].text}</p>
-            <div style={styles.author}>
+          <div className="testimonials-slide">
+            <div className="testimonials-quote">"</div>
+            <p className="testimonials-text">{testimonials[currentIndex].text}</p>
+            <div className="testimonials-author">
               <img 
                 src={testimonials[currentIndex].avatar} 
                 alt={testimonials[currentIndex].name}
-                style={styles.avatar}
+                className="testimonials-avatar"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/80x80?text=User';
+                }}
               />
-              <div style={styles.info}>
-                <h4 style={styles.name}>{testimonials[currentIndex].name}</h4>
-                <p style={styles.role}>{testimonials[currentIndex].role}</p>
+              <div className="testimonials-info">
+                <h4 className="testimonials-name">{testimonials[currentIndex].name}</h4>
+                <p className="testimonials-role">{testimonials[currentIndex].role}</p>
               </div>
             </div>
           </div>
 
           <button
-            style={{...styles.arrow, ...styles.nextArrow}}
+            className="testimonials-arrow testimonials-arrow-right"
             onClick={handleNext}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--primary-red)';
-              e.currentTarget.style.color = 'var(--primary-white)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'var(--primary-white)';
-              e.currentTarget.style.color = 'var(--primary-black)';
-            }}
+            aria-label="Next testimonial"
           >
             ›
           </button>
 
-          <div style={styles.dots}>
+          <div className="testimonials-dots">
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                style={{
-                  ...styles.dot,
-                  ...(currentIndex === index ? styles.dotActive : {}),
-                }}
+                className={`testimonials-dot ${currentIndex === index ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
         </div>
       </div>
 
-      <style>
-        {`
-          /* Large Desktop */
-          @media (min-width: 1400px) {
-            section {
-              padding: 6rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 4rem !important;
-            }
-            p[style*="text"] {
-              font-size: 1.4rem !important;
-            }
+      <style>{`
+        .testimonials {
+          padding: clamp(3rem, 8vw, 5rem) 0;
+          background: var(--primary-white);
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .testimonials-container {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 clamp(1rem, 5vw, 2rem);
+          width: 100%;
+        }
+
+        .testimonials-slider {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+        }
+
+        .testimonials-slide {
+          background: var(--gray-100);
+          border-radius: var(--radius-xl);
+          padding: clamp(2rem, 5vw, 3rem);
+          text-align: center;
+          position: relative;
+          box-shadow: var(--shadow-xl);
+          animation: fadeIn 0.5s ease;
+        }
+
+        .testimonials-quote {
+          font-size: 6rem;
+          color: var(--primary-red);
+          opacity: 0.2;
+          position: absolute;
+          top: 1rem;
+          left: 2rem;
+          font-family: Georgia, serif;
+          line-height: 1;
+        }
+
+        .testimonials-text {
+          font-size: clamp(1rem, 2.5vw, 1.25rem);
+          line-height: 1.8;
+          color: var(--gray-600);
+          margin-bottom: 2rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .testimonials-author {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .testimonials-avatar {
+          width: 4rem;
+          height: 4rem;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid var(--primary-red);
+        }
+
+        .testimonials-info {
+          text-align: left;
+        }
+
+        .testimonials-name {
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: var(--primary-black);
+          margin-bottom: 0.25rem;
+        }
+
+        .testimonials-role {
+          color: var(--primary-red);
+          font-size: 0.875rem;
+        }
+
+        .testimonials-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          background: var(--primary-white);
+          border: none;
+          box-shadow: var(--shadow-md);
+          font-size: 2rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all var(--transition-base);
+          z-index: 2;
+          color: var(--gray-600);
+        }
+
+        .testimonials-arrow:hover {
+          background: var(--primary-red);
+          color: var(--primary-white);
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .testimonials-arrow-left {
+          left: -1.5rem;
+        }
+
+        .testimonials-arrow-right {
+          right: -1.5rem;
+        }
+
+        .testimonials-dots {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 2rem;
+        }
+
+        .testimonials-dot {
+          width: 0.75rem;
+          height: 0.75rem;
+          border-radius: 50%;
+          background: var(--gray-300);
+          border: none;
+          cursor: pointer;
+          transition: all var(--transition-base);
+          padding: 0;
+        }
+
+        .testimonials-dot.active {
+          background: var(--primary-red);
+          transform: scale(1.2);
+        }
+
+        .testimonials-dot:hover {
+          background: var(--primary-red);
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+          .testimonials-arrow-left {
+            left: -1rem;
           }
 
-          /* Desktop */
-          @media (min-width: 1200px) and (max-width: 1399px) {
-            section {
-              padding: 5rem 0 !important;
-            }
+          .testimonials-arrow-right {
+            right: -1rem;
+          }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          .testimonials-slide {
+            padding: 1.5rem;
           }
 
-          /* Small Desktop / Large Tablet */
-          @media (min-width: 1024px) and (max-width: 1199px) {
-            section {
-              padding: 4rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 2.5rem !important;
-            }
-            p[style*="text"] {
-              font-size: 1.2rem !important;
-            }
+          .testimonials-quote {
+            font-size: 4rem;
+            top: 0.5rem;
+            left: 1rem;
           }
 
-          /* Tablet Landscape */
-          @media (min-width: 768px) and (max-width: 1023px) {
-            section {
-              padding: 4rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 2.5rem !important;
-            }
-            p[style*="text"] {
-              font-size: 1.1rem !important;
-            }
-            button[style*="arrow"] {
-              width: 2.5rem !important;
-              height: 2.5rem !important;
-              font-size: 1.2rem !important;
-            }
+          .testimonials-text {
+            font-size: 1rem;
           }
 
-          /* Tablet Portrait */
-          @media (min-width: 640px) and (max-width: 767px) {
-            section {
-              padding: 3rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 2rem !important;
-            }
-            p[style*="text"] {
-              font-size: 1rem !important;
-              line-height: 1.6 !important;
-            }
-            button[style*="arrow"] {
-              width: 2.2rem !important;
-              height: 2.2rem !important;
-              font-size: 1rem !important;
-            }
-            button[style*="prevArrow"] {
-              left: -1rem !important;
-            }
-            button[style*="nextArrow"] {
-              right: -1rem !important;
-            }
+          .testimonials-author {
+            flex-direction: column;
+            text-align: center;
           }
 
-          /* Mobile Large */
-          @media (min-width: 481px) and (max-width: 639px) {
-            section {
-              padding: 2.5rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 1.5rem !important;
-            }
-            p[style*="text"] {
-              font-size: 0.95rem !important;
-              line-height: 1.5 !important;
-              margin-bottom: 1.5rem !important;
-            }
-            div[style*="author"] {
-              flex-direction: column !important;
-              text-align: center !important;
-            }
-            div[style*="info"] {
-              text-align: center !important;
-            }
-            img {
-              width: 3.5rem !important;
-              height: 3.5rem !important;
-            }
-            button[style*="arrow"] {
-              display: none !important;
-            }
+          .testimonials-info {
+            text-align: center;
           }
 
-          /* Mobile Medium */
-          @media (min-width: 376px) and (max-width: 480px) {
-            section {
-              padding: 2rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 1.25rem !important;
-            }
-            p[style*="text"] {
-              font-size: 0.9rem !important;
-              line-height: 1.5 !important;
-              margin-bottom: 1.25rem !important;
-            }
-            div[style*="quote"] {
-              font-size: 3rem !important;
-              top: 0.5rem !important;
-              left: 1rem !important;
-            }
-            div[style*="author"] {
-              flex-direction: column !important;
-              text-align: center !important;
-            }
-            div[style*="info"] {
-              text-align: center !important;
-            }
-            h4 {
-              font-size: 1rem !important;
-            }
-            p[style*="role"] {
-              font-size: 0.8rem !important;
-            }
-            img {
-              width: 3rem !important;
-              height: 3rem !important;
-            }
-            button[style*="arrow"] {
-              display: none !important;
-            }
+          .testimonials-arrow {
+            display: none;
           }
 
-          /* Mobile Small */
-          @media (max-width: 375px) {
-            section {
-              padding: 1.5rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 1rem !important;
-            }
-            p[style*="text"] {
-              font-size: 0.85rem !important;
-              line-height: 1.4 !important;
-              margin-bottom: 1rem !important;
-            }
-            div[style*="quote"] {
-              font-size: 2.5rem !important;
-              top: 0.25rem !important;
-              left: 0.75rem !important;
-            }
-            div[style*="author"] {
-              flex-direction: column !important;
-              text-align: center !important;
-            }
-            div[style*="info"] {
-              text-align: center !important;
-            }
-            h4 {
-              font-size: 0.95rem !important;
-            }
-            p[style*="role"] {
-              font-size: 0.75rem !important;
-            }
-            img {
-              width: 2.5rem !important;
-              height: 2.5rem !important;
-            }
-            button[style*="arrow"] {
-              display: none !important;
-            }
-            div[style*="dots"] {
-              margin-top: 1rem !important;
-            }
-            div[style*="dot"] {
-              width: 0.5rem !important;
-              height: 0.5rem !important;
-            }
+          .testimonials-avatar {
+            width: 3.5rem;
+            height: 3.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .testimonials {
+            padding: 2rem 0;
           }
 
-          /* Landscape Mode */
-          @media (max-height: 600px) and (orientation: landscape) {
-            section {
-              padding: 2rem 0 !important;
-            }
-            div[style*="slide"] {
-              padding: 1.5rem !important;
-            }
+          .testimonials-slide {
+            padding: 1.25rem;
           }
 
-          /* High Resolution Screens */
-          @media (min-width: 1920px) {
-            div[style*="container"] {
-              max-width: 1600px !important;
-            }
-            div[style*="slider"] {
-              max-width: 1000px !important;
-            }
-            p[style*="text"] {
-              font-size: 1.5rem !important;
-            }
+          .testimonials-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
           }
 
-          /* Reduced Motion */
-          @media (prefers-reduced-motion: reduce) {
-            * {
-              animation: none !important;
-              transition: none !important;
-            }
+          .testimonials-name {
+            font-size: 1rem;
           }
-        `}
-      </style>
+
+          .testimonials-role {
+            font-size: 0.8rem;
+          }
+        }
+
+        @media (max-width: 375px) {
+          .testimonials-text {
+            font-size: 0.9rem;
+          }
+
+          .testimonials-avatar {
+            width: 3rem;
+            height: 3rem;
+          }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          .testimonials-arrow:hover {
+            background: var(--primary-white);
+            color: var(--gray-600);
+            transform: translateY(-50%);
+          }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+          .testimonials-slide,
+          .testimonials-arrow,
+          .testimonials-dot {
+            transition: none;
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };

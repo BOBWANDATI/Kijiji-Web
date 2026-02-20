@@ -1,265 +1,72 @@
 import React from 'react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
   const socialLinks = {
     facebook: 'https://web.facebook.com/KijijiConnect?_rdc=1&_rdr#',
     linkedin: 'https://www.linkedin.com/company/amanicenter/',
     twitter: 'https://x.com/Amanicentercbo',
-    instagram: 'https://instagram.com/kijijiconnect',
+    instagram: '#',
   };
 
-  const styles = {
-    footer: {
-      background: 'var(--primary-black)',
-      color: 'var(--primary-white)',
-      padding: '4rem 0 2rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    container: {
-      maxWidth: '1280px',
-      margin: '0 auto',
-      padding: '0 2rem',
-    },
-    grid: {
-      display: 'grid',
-      gridTemplateColumns: '2fr 1fr 1fr 1.5fr',
-      gap: '3rem',
-      marginBottom: '3rem',
-    },
-    brand: {
-      fontSize: '1.8rem',
-      fontWeight: 'bold',
-      marginBottom: '1rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    brandRed: {
-      color: 'var(--primary-red)',
-    },
-    description: {
-      color: 'var(--gray-400)',
-      lineHeight: '1.8',
-      marginBottom: '1.5rem',
-      fontSize: '1rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    social: {
-      display: 'flex',
-      gap: '1rem',
-    },
-    socialLink: {
-      width: '2.8rem',
-      height: '2.8rem',
-      background: 'rgba(255,255,255,0.1)',
-      borderRadius: '50%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: 'var(--primary-white)',
-      textDecoration: 'none',
-      transition: 'all 0.3s ease',
-      fontSize: '1.3rem',
-      border: '1px solid transparent',
-    },
-    columnTitle: {
-      fontSize: '1.2rem',
-      fontWeight: '600',
-      marginBottom: '1.5rem',
-      color: 'var(--primary-white)',
-      position: 'relative',
-      paddingBottom: '0.5rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    columnTitleUnderline: {
-      content: '',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      width: '40px',
-      height: '2px',
-      background: 'var(--primary-red)',
-    },
-    links: {
-      listStyle: 'none',
-      padding: 0,
-    },
-    linkItem: {
-      marginBottom: '0.8rem',
-    },
-    link: {
-      color: 'var(--gray-400)',
-      textDecoration: 'none',
-      transition: 'color 0.3s ease, transform 0.3s ease',
-      cursor: 'pointer',
-      display: 'inline-block',
-      fontSize: '1rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    contactInfo: {
-      color: 'var(--gray-400)',
-      lineHeight: '1.8',
-    },
-    contactItem: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.8rem',
-      marginBottom: '1.2rem',
-      transition: 'transform 0.3s ease',
-    },
-    contactIcon: {
-      color: 'var(--primary-red)',
-      fontSize: '1.3rem',
-      minWidth: '1.5rem',
-    },
-    contactText: {
-      fontSize: '1rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    bottom: {
-      borderTop: '1px solid rgba(255,255,255,0.1)',
-      paddingTop: '2rem',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      color: 'var(--gray-500)',
-      fontSize: '0.9rem',
-      flexWrap: 'wrap',
-      gap: '1rem',
-    },
-    bottomLinks: {
-      display: 'flex',
-      gap: '2rem',
-    },
-    bottomLink: {
-      color: 'var(--gray-500)',
-      textDecoration: 'none',
-      transition: 'color 0.3s ease',
-      fontSize: '0.9rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    newsletter: {
-      marginTop: '1.5rem',
-    },
-    newsletterInput: {
-      display: 'flex',
-      gap: '0.5rem',
-    },
-    input: {
-      flex: 1,
-      padding: '0.8rem',
-      background: 'rgba(255,255,255,0.1)',
-      border: '1px solid rgba(255,255,255,0.2)',
-      borderRadius: '0.375rem',
-      color: 'var(--primary-white)',
-      fontSize: '0.95rem',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-    subscribeBtn: {
-      padding: '0.8rem 1.5rem',
-      background: 'var(--primary-red)',
-      color: 'var(--primary-white)',
-      border: 'none',
-      borderRadius: '0.375rem',
-      cursor: 'pointer',
-      fontWeight: '600',
-      transition: 'all 0.3s ease',
-      fontFamily: 'Georgia, "Times New Roman", Times, serif',
-    },
-  };
+  const quickLinks = ['About', 'Curriculum', 'Projects', 'Gallery', 'Apply'];
+  const resources = ['FAQ', 'Blog', 'Success Stories', 'Partner With Us', 'Volunteer'];
 
   return (
-    <footer style={styles.footer}>
-      <div style={styles.container}>
-        <div style={styles.grid}>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-grid">
           {/* Brand Column */}
-          <div>
-            <div style={styles.brand}>
-              Kijiji<span style={styles.brandRed}>Connect</span>
+          <div className="footer-brand">
+            <div className="footer-logo">
+              Kijiji<span className="footer-logo-red">Connect</span>
             </div>
-            <p style={styles.description}>
+            <p className="footer-description">
               Empowering youth with digital skills for a better future. 
               Join our March 2026 cohort at Amani Center and transform 
               your career in just 10 weeks.
             </p>
             
-            <div style={styles.social}>
+            <div className="footer-social">
               <a
                 href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={styles.socialLink}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1877f2';
-                  e.currentTarget.style.transform = 'translateY(-5px) scale(1.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                }}
+                className="footer-social-link"
                 aria-label="Facebook"
               >
                 f
               </a>
-
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={styles.socialLink}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#0077b5';
-                  e.currentTarget.style.transform = 'translateY(-5px) scale(1.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                }}
+                className="footer-social-link"
                 aria-label="LinkedIn"
               >
                 in
               </a>
-
               <a
                 href={socialLinks.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={styles.socialLink}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#000000';
-                  e.currentTarget.style.transform = 'translateY(-5px) scale(1.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                }}
+                className="footer-social-link"
                 aria-label="Twitter"
               >
                 𝕏
               </a>
             </div>
 
-            <div style={styles.newsletter}>
-              <h4 style={{ ...styles.columnTitle, fontSize: '1rem', marginBottom: '1rem' }}>
-                Subscribe to Newsletter
-              </h4>
-              <div style={styles.newsletterInput}>
+            <div className="footer-newsletter">
+              <h4 className="footer-newsletter-title">Subscribe to Newsletter</h4>
+              <div className="footer-newsletter-form">
                 <input
                   type="email"
                   placeholder="Your email"
-                  style={styles.input}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--primary-red)'}
-                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.2)'}
+                  className="footer-newsletter-input"
                 />
-                <button
-                  style={styles.subscribeBtn}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#b91c1c';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'var(--primary-red)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
+                <button className="footer-newsletter-btn">
                   Subscribe
                 </button>
               </div>
@@ -267,26 +74,15 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 style={styles.columnTitle}>
+          <div className="footer-links">
+            <h3 className="footer-links-title">
               Quick Links
-              <span style={styles.columnTitleUnderline}></span>
+              <span className="footer-links-underline"></span>
             </h3>
-            <ul style={styles.links}>
-              {['About', 'Curriculum', 'Projects', 'Gallery', 'Apply'].map((item) => (
-                <li key={item} style={styles.linkItem}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    style={styles.link}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--primary-red)';
-                      e.currentTarget.style.transform = 'translateX(5px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--gray-400)';
-                      e.currentTarget.style.transform = 'translateX(0)';
-                    }}
-                  >
+            <ul className="footer-links-list">
+              {quickLinks.map((item) => (
+                <li key={item}>
+                  <a href={`#${item.toLowerCase()}`} className="footer-link">
                     {item}
                   </a>
                 </li>
@@ -295,26 +91,15 @@ const Footer = () => {
           </div>
 
           {/* Resources */}
-          <div>
-            <h3 style={styles.columnTitle}>
+          <div className="footer-links">
+            <h3 className="footer-links-title">
               Resources
-              <span style={styles.columnTitleUnderline}></span>
+              <span className="footer-links-underline"></span>
             </h3>
-            <ul style={styles.links}>
-              {['FAQ', 'Blog', 'Success Stories', 'Partner With Us', 'Volunteer'].map((item) => (
-                <li key={item} style={styles.linkItem}>
-                  <a
-                    href="#"
-                    style={styles.link}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--primary-red)';
-                      e.currentTarget.style.transform = 'translateX(5px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--gray-400)';
-                      e.currentTarget.style.transform = 'translateX(0)';
-                    }}
-                  >
+            <ul className="footer-links-list">
+              {resources.map((item) => (
+                <li key={item}>
+                  <a href="#" className="footer-link">
                     {item}
                   </a>
                 </li>
@@ -323,482 +108,449 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 style={styles.columnTitle}>
+          <div className="footer-contact">
+            <h3 className="footer-links-title">
               Contact Us
-              <span style={styles.columnTitleUnderline}></span>
+              <span className="footer-links-underline"></span>
             </h3>
-            <div style={styles.contactInfo}>
-              <div 
-                style={styles.contactItem}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
-              >
-                <span style={styles.contactIcon}>📍</span>
-                <span style={styles.contactText}>Amani Center, Tanariver, Kenya</span>
+            <div className="footer-contact-info">
+              <div className="footer-contact-item">
+                <span className="footer-contact-icon">📍</span>
+                <span>Amani Center, Tanariver, Kenya</span>
               </div>
-              <div 
-                style={styles.contactItem}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
-              >
-                <span style={styles.contactIcon}>📞</span>
-                <span style={styles.contactText}>+254 704331818</span>
+              <div className="footer-contact-item">
+                <span className="footer-contact-icon">📞</span>
+                <a href="tel:+254704331818" className="footer-contact-link">
+                  +254 704331818
+                </a>
               </div>
-              <div 
-                style={styles.contactItem}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
-              >
-                <span style={styles.contactIcon}>✉️</span>
-                <span style={styles.contactText}>kijijiconnectkenya@gmail.com</span>
+              <div className="footer-contact-item">
+                <span className="footer-contact-icon">✉️</span>
+                <a href="mailto:kijijiconnectkenya@gmail.com" className="footer-contact-link">
+                  kijijiconnectkenya@gmail.com
+                </a>
               </div>
-              <div 
-                style={styles.contactItem}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
-              >
-                <span style={styles.contactIcon}>🕒</span>
-                <span style={styles.contactText}>Mon - Fri: 8:00 AM - 5:00 PM</span>
+              <div className="footer-contact-item">
+                <span className="footer-contact-icon">🕒</span>
+                <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div style={styles.bottom}>
-          <div>© {new Date().getFullYear()} Kijiji Connect Digital Hub. All rights reserved.</div>
-          <div style={styles.bottomLinks}>
-            <a 
-              href="#" 
-              style={styles.bottomLink}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-500)'}
-            >
-              Privacy Policy
-            </a>
-            <a 
-              href="#" 
-              style={styles.bottomLink}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-500)'}
-            >
-              Terms of Service
-            </a>
-            <a 
-              href="#" 
-              style={styles.bottomLink}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-500)'}
-            >
-              Cookie Policy
-            </a>
+        <div className="footer-bottom">
+          <div className="footer-copyright">
+            © {currentYear} Kijiji Connect Digital Hub. All rights reserved.
+          </div>
+          <div className="footer-bottom-links">
+            <a href="#" className="footer-bottom-link">Privacy Policy</a>
+            <a href="#" className="footer-bottom-link">Terms of Service</a>
+            <a href="#" className="footer-bottom-link">Cookie Policy</a>
           </div>
         </div>
       </div>
 
-      <style>
-        {`
-          /* Large Desktop */
-          @media (min-width: 1400px) {
-            footer {
-              padding: 5rem 0 2.5rem !important;
-            }
-            div[style*="grid"] {
-              gap: 4rem !important;
-            }
-            div[style*="brand"] {
-              font-size: 2rem !important;
-            }
+      <style>{`
+        .footer {
+          background: var(--primary-black);
+          color: var(--primary-white);
+          padding: clamp(3rem, 8vw, 4rem) 0 clamp(1.5rem, 4vw, 2rem);
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .footer-container {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 clamp(1rem, 5vw, 2rem);
+          width: 100%;
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 1.5fr;
+          gap: clamp(2rem, 5vw, 3rem);
+          margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .footer-logo {
+          font-size: clamp(1.5rem, 4vw, 1.8rem);
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+
+        .footer-logo-red {
+          color: var(--primary-red);
+        }
+
+        .footer-description {
+          color: var(--gray-400);
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+          font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .footer-social {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .footer-social-link {
+          width: 2.5rem;
+          height: 2.5rem;
+          background: rgba(255,255,255,0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--primary-white);
+          text-decoration: none;
+          transition: all var(--transition-base);
+          font-size: 1.1rem;
+        }
+
+        .footer-social-link:hover {
+          transform: translateY(-3px) scale(1.1);
+        }
+
+        .footer-social-link[aria-label="Facebook"]:hover {
+          background: #1877f2;
+        }
+
+        .footer-social-link[aria-label="LinkedIn"]:hover {
+          background: #0077b5;
+        }
+
+        .footer-social-link[aria-label="Twitter"]:hover {
+          background: #000000;
+        }
+
+        .footer-newsletter-title {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: var(--primary-white);
+        }
+
+        .footer-newsletter-form {
+          display: flex;
+          gap: 0.5rem;
+        }
+
+        .footer-newsletter-input {
+          flex: 1;
+          padding: 0.8rem;
+          background: rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: var(--radius-sm);
+          color: var(--primary-white);
+          font-size: 0.9rem;
+        }
+
+        .footer-newsletter-input:focus {
+          border-color: var(--primary-red);
+          outline: none;
+        }
+
+        .footer-newsletter-btn {
+          padding: 0.8rem 1.2rem;
+          background: var(--primary-red);
+          color: var(--primary-white);
+          border: none;
+          border-radius: var(--radius-sm);
+          cursor: pointer;
+          font-weight: 600;
+          transition: all var(--transition-base);
+          white-space: nowrap;
+        }
+
+        .footer-newsletter-btn:hover {
+          background: var(--primary-red-hover);
+          transform: translateY(-2px);
+        }
+
+        .footer-links-title {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+          color: var(--primary-white);
+          position: relative;
+          padding-bottom: 0.5rem;
+        }
+
+        .footer-links-underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40px;
+          height: 2px;
+          background: var(--primary-red);
+        }
+
+        .footer-links-list {
+          list-style: none;
+          padding: 0;
+        }
+
+        .footer-links-list li {
+          margin-bottom: 0.8rem;
+        }
+
+        .footer-link {
+          color: var(--gray-400);
+          text-decoration: none;
+          transition: all var(--transition-base);
+          display: inline-block;
+          font-size: 1rem;
+        }
+
+        .footer-link:hover {
+          color: var(--primary-red);
+          transform: translateX(5px);
+        }
+
+        .footer-contact-info {
+          color: var(--gray-400);
+        }
+
+        .footer-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          margin-bottom: 1rem;
+          transition: transform var(--transition-base);
+          font-size: 0.95rem;
+        }
+
+        .footer-contact-item:hover {
+          transform: translateX(5px);
+        }
+
+        .footer-contact-icon {
+          color: var(--primary-red);
+          font-size: 1.1rem;
+          min-width: 1.5rem;
+        }
+
+        .footer-contact-link {
+          color: var(--gray-400);
+          text-decoration: none;
+          transition: color var(--transition-base);
+        }
+
+        .footer-contact-link:hover {
+          color: var(--primary-red);
+        }
+
+        .footer-bottom {
+          border-top: 1px solid rgba(255,255,255,0.1);
+          padding-top: 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: var(--gray-500);
+          font-size: 0.9rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .footer-bottom-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .footer-bottom-link {
+          color: var(--gray-500);
+          text-decoration: none;
+          transition: color var(--transition-base);
+          font-size: 0.9rem;
+        }
+
+        .footer-bottom-link:hover {
+          color: var(--primary-red);
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+          .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
           }
 
-          /* Desktop */
-          @media (min-width: 1200px) and (max-width: 1399px) {
-            footer {
-              padding: 4rem 0 2rem !important;
-            }
-            div[style*="grid"] {
-              gap: 2.5rem !important;
-            }
+          .footer-brand {
+            grid-column: 1 / -1;
+          }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
           }
 
-          /* Small Desktop / Large Tablet */
-          @media (min-width: 1024px) and (max-width: 1199px) {
-            footer {
-              padding: 3.5rem 0 2rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr 1fr !important;
-              gap: 2.5rem !important;
-            }
+          .footer-brand,
+          .footer-links,
+          .footer-contact {
+            text-align: center;
           }
 
-          /* Tablet Landscape */
-          @media (min-width: 768px) and (max-width: 1023px) {
-            footer {
-              padding: 3rem 0 1.5rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr 1fr !important;
-              gap: 2rem !important;
-            }
-            div[style*="brand"] {
-              font-size: 1.6rem !important;
-            }
-            p {
-              font-size: 0.95rem !important;
-            }
+          .footer-links-underline {
+            left: 50%;
+            transform: translateX(-50%);
           }
 
-          /* Tablet Portrait */
-          @media (min-width: 640px) and (max-width: 767px) {
-            footer {
-              padding: 2.5rem 0 1.5rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 2rem !important;
-            }
-            div[style*="brand"] {
-              text-align: center !important;
-            }
-            p {
-              text-align: center !important;
-            }
-            div[style*="social"] {
-              justify-content: center !important;
-            }
-            h3 {
-              text-align: center !important;
-            }
-            h3 span {
-              left: 50% !important;
-              transform: translateX(-50%) !important;
-            }
-            ul {
-              text-align: center !important;
-            }
-            div[style*="contactItem"] {
-              justify-content: center !important;
-            }
-            div[style*="newsletter"] {
-              max-width: 400px !important;
-              margin: 0 auto !important;
-            }
+          .footer-social {
+            justify-content: center;
           }
 
-          /* Mobile Large */
-          @media (min-width: 481px) and (max-width: 639px) {
-            footer {
-              padding: 2rem 0 1rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 1.5rem !important;
-            }
-            div[style*="brand"] {
-              font-size: 1.5rem !important;
-              text-align: center !important;
-            }
-            p {
-              font-size: 0.9rem !important;
-              text-align: center !important;
-            }
-            div[style*="social"] {
-              justify-content: center !important;
-            }
-            a[style*="socialLink"] {
-              width: 2.5rem !important;
-              height: 2.5rem !important;
-              font-size: 1.1rem !important;
-            }
-            h3 {
-              font-size: 1.1rem !important;
-              text-align: center !important;
-            }
-            h3 span {
-              left: 50% !important;
-              transform: translateX(-50%) !important;
-            }
-            ul {
-              text-align: center !important;
-            }
-            li {
-              margin-bottom: 0.6rem !important;
-            }
-            a {
-              font-size: 0.9rem !important;
-            }
-            div[style*="contactItem"] {
-              justify-content: center !important;
-              gap: 0.5rem !important;
-            }
-            span[style*="contactIcon"] {
-              font-size: 1.1rem !important;
-            }
-            span[style*="contactText"] {
-              font-size: 0.9rem !important;
-            }
-            div[style*="newsletter"] {
-              max-width: 350px !important;
-              margin: 1.5rem auto 0 !important;
-            }
-            div[style*="newsletterInput"] {
-              flex-direction: column !important;
-            }
-            input {
-              width: 100% !important;
-              padding: 0.6rem !important;
-            }
-            button {
-              width: 100% !important;
-              padding: 0.6rem !important;
-            }
-            div[style*="bottom"] {
-              flex-direction: column !important;
-              text-align: center !important;
-              gap: 1rem !important;
-            }
-            div[style*="bottomLinks"] {
-              justify-content: center !important;
-              flex-wrap: wrap !important;
-              gap: 1rem !important;
-            }
+          .footer-contact-item {
+            justify-content: center;
           }
 
-          /* Mobile Medium */
-          @media (min-width: 376px) and (max-width: 480px) {
-            footer {
-              padding: 1.5rem 0 1rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 1.25rem !important;
-              margin-bottom: 2rem !important;
-            }
-            div[style*="brand"] {
-              font-size: 1.4rem !important;
-              text-align: center !important;
-            }
-            p {
-              font-size: 0.85rem !important;
-              line-height: 1.6 !important;
-              text-align: center !important;
-              margin-bottom: 1rem !important;
-            }
-            div[style*="social"] {
-              gap: 0.75rem !important;
-            }
-            a[style*="socialLink"] {
-              width: 2.2rem !important;
-              height: 2.2rem !important;
-              font-size: 1rem !important;
-            }
-            h3 {
-              font-size: 1rem !important;
-              margin-bottom: 1rem !important;
-              text-align: center !important;
-            }
-            h3 span {
-              width: 30px !important;
-              left: 50% !important;
-              transform: translateX(-50%) !important;
-            }
-            ul {
-              text-align: center !important;
-            }
-            li {
-              margin-bottom: 0.5rem !important;
-            }
-            a {
-              font-size: 0.85rem !important;
-            }
-            div[style*="contactItem"] {
-              justify-content: center !important;
-              gap: 0.4rem !important;
-              margin-bottom: 0.8rem !important;
-            }
-            span[style*="contactIcon"] {
-              font-size: 1rem !important;
-              min-width: 1.2rem !important;
-            }
-            span[style*="contactText"] {
-              font-size: 0.85rem !important;
-            }
-            div[style*="newsletter"] {
-              max-width: 300px !important;
-              margin: 1rem auto 0 !important;
-            }
-            h4 {
-              text-align: center !important;
-              font-size: 0.95rem !important;
-            }
-            div[style*="newsletterInput"] {
-              flex-direction: column !important;
-            }
-            input {
-              padding: 0.5rem !important;
-              font-size: 0.85rem !important;
-            }
-            button {
-              padding: 0.5rem !important;
-              font-size: 0.85rem !important;
-            }
-            div[style*="bottom"] {
-              flex-direction: column !important;
-              text-align: center !important;
-              gap: 0.75rem !important;
-              font-size: 0.8rem !important;
-            }
-            div[style*="bottomLinks"] {
-              justify-content: center !important;
-              flex-wrap: wrap !important;
-              gap: 0.75rem !important;
-            }
-            a[style*="bottomLink"] {
-              font-size: 0.8rem !important;
-            }
+          .footer-newsletter-form {
+            max-width: 400px;
+            margin: 0 auto;
           }
 
-          /* Mobile Small */
-          @media (max-width: 375px) {
-            footer {
-              padding: 1.25rem 0 0.75rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 1rem !important;
-              margin-bottom: 1.5rem !important;
-            }
-            div[style*="brand"] {
-              font-size: 1.3rem !important;
-              text-align: center !important;
-            }
-            p {
-              font-size: 0.8rem !important;
-              line-height: 1.5 !important;
-              text-align: center !important;
-              margin-bottom: 0.75rem !important;
-            }
-            div[style*="social"] {
-              gap: 0.5rem !important;
-            }
-            a[style*="socialLink"] {
-              width: 2rem !important;
-              height: 2rem !important;
-              font-size: 0.9rem !important;
-            }
-            h3 {
-              font-size: 0.95rem !important;
-              margin-bottom: 0.75rem !important;
-              text-align: center !important;
-            }
-            h3 span {
-              width: 25px !important;
-              height: 1.5px !important;
-              left: 50% !important;
-              transform: translateX(-50%) !important;
-            }
-            ul {
-              text-align: center !important;
-            }
-            li {
-              margin-bottom: 0.4rem !important;
-            }
-            a {
-              font-size: 0.8rem !important;
-            }
-            div[style*="contactItem"] {
-              justify-content: center !important;
-              gap: 0.3rem !important;
-              margin-bottom: 0.6rem !important;
-            }
-            span[style*="contactIcon"] {
-              font-size: 0.9rem !important;
-              min-width: 1rem !important;
-            }
-            span[style*="contactText"] {
-              font-size: 0.8rem !important;
-            }
-            div[style*="newsletter"] {
-              max-width: 250px !important;
-              margin: 0.75rem auto 0 !important;
-            }
-            h4 {
-              text-align: center !important;
-              font-size: 0.9rem !important;
-              margin-bottom: 0.5rem !important;
-            }
-            div[style*="newsletterInput"] {
-              flex-direction: column !important;
-            }
-            input {
-              padding: 0.4rem !important;
-              font-size: 0.8rem !important;
-            }
-            button {
-              padding: 0.4rem !important;
-              font-size: 0.8rem !important;
-            }
-            div[style*="bottom"] {
-              flex-direction: column !important;
-              text-align: center !important;
-              gap: 0.5rem !important;
-              font-size: 0.75rem !important;
-              padding-top: 1rem !important;
-            }
-            div[style*="bottomLinks"] {
-              justify-content: center !important;
-              flex-wrap: wrap !important;
-              gap: 0.5rem !important;
-            }
-            a[style*="bottomLink"] {
-              font-size: 0.75rem !important;
-            }
+          .footer-bottom {
+            flex-direction: column;
+            text-align: center;
           }
 
-          /* Extra Small Mobile */
-          @media (max-width: 320px) {
-            div[style*="brand"] {
-              font-size: 1.2rem !important;
-            }
-            p {
-              font-size: 0.75rem !important;
-            }
-            a[style*="socialLink"] {
-              width: 1.8rem !important;
-              height: 1.8rem !important;
-              font-size: 0.8rem !important;
-            }
-            h3 {
-              font-size: 0.9rem !important;
-            }
-            a {
-              font-size: 0.75rem !important;
-            }
-            span[style*="contactText"] {
-              font-size: 0.75rem !important;
-            }
+          .footer-bottom-links {
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .footer {
+            padding: 2rem 0 1rem;
           }
 
-          /* Landscape Mode */
-          @media (max-height: 600px) and (orientation: landscape) {
-            footer {
-              padding: 2rem 0 1rem !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: repeat(2, 1fr) !important;
-            }
+          .footer-logo {
+            font-size: 1.5rem;
           }
 
-          /* Print Styles */
-          @media print {
-            footer {
-              display: none !important;
-            }
+          .footer-description {
+            font-size: 0.9rem;
           }
-        `}
-      </style>
+
+          .footer-social-link {
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: 1rem;
+          }
+
+          .footer-newsletter-form {
+            flex-direction: column;
+          }
+
+          .footer-newsletter-btn {
+            width: 100%;
+          }
+
+          .footer-links-title {
+            font-size: 1.1rem;
+          }
+
+          .footer-link {
+            font-size: 0.9rem;
+          }
+
+          .footer-contact-item {
+            font-size: 0.85rem;
+          }
+
+          .footer-bottom {
+            font-size: 0.8rem;
+          }
+
+          .footer-bottom-links {
+            gap: 1rem;
+          }
+
+          .footer-bottom-link {
+            font-size: 0.8rem;
+          }
+        }
+
+        @media (max-width: 375px) {
+          .footer-logo {
+            font-size: 1.3rem;
+          }
+
+          .footer-description {
+            font-size: 0.85rem;
+          }
+
+          .footer-contact-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.3rem;
+          }
+        }
+
+        /* Landscape Mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+          .footer {
+            padding: 2rem 0;
+          }
+
+          .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          .footer-social-link:hover {
+            transform: none;
+          }
+
+          .footer-link:hover {
+            transform: none;
+          }
+
+          .footer-newsletter-btn:hover {
+            transform: none;
+          }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+          .footer-social-link,
+          .footer-link,
+          .footer-contact-item,
+          .footer-newsletter-btn {
+            transition: none;
+          }
+
+          .footer-social-link:hover,
+          .footer-link:hover,
+          .footer-contact-item:hover,
+          .footer-newsletter-btn:hover {
+            transform: none;
+          }
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+          .footer {
+            background: #000000;
+          }
+        }
+
+        /* Print Styles */
+        @media print {
+          .footer {
+            display: none;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

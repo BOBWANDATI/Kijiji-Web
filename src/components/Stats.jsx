@@ -12,10 +12,7 @@ const Stats = () => {
           observer.unobserve(entry.target);
         }
       },
-      {
-        threshold: 0.2,
-        rootMargin: '0px',
-      }
+      { threshold: 0.2 }
     );
 
     if (statsRef.current) {
@@ -29,334 +26,194 @@ const Stats = () => {
     };
   }, []);
 
-  const styles = {
-    stats: {
-      padding: '4rem 0',
-      background: 'var(--primary-white)',
-      position: 'relative',
-      overflow: 'hidden',
-    },
-    container: {
-      maxWidth: '1280px',
-      margin: '0 auto',
-      padding: '0 2rem',
-    },
-    grid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: '2rem',
-      opacity: isVisible ? 1 : 0,
-      transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-      transition: 'opacity 0.8s ease, transform 0.8s ease',
-    },
-    statItem: {
-      textAlign: 'center',
-      padding: '2rem',
-      background: 'var(--gray-100)',
-      borderRadius: '1rem',
-      transition: 'all 0.3s ease',
-      animation: isVisible ? 'popIn 0.6s ease forwards' : 'none',
-      animationDelay: '0.2s',
-      opacity: 0,
-      transform: 'scale(0.9)',
-      position: 'relative',
-      overflow: 'hidden',
-      cursor: 'pointer',
-      boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-    },
-    number: {
-      fontSize: '3.5rem',
-      fontWeight: '800',
-      color: 'var(--primary-red)',
-      marginBottom: '0.5rem',
-      lineHeight: '1',
-      position: 'relative',
-      zIndex: 2,
-      transition: 'all 0.3s ease',
-    },
-    label: {
-      fontSize: '1.2rem',
-      color: 'var(--primary-black)',
-      fontWeight: '600',
-      position: 'relative',
-      zIndex: 2,
-      letterSpacing: '0.5px',
-    },
-    backgroundCircle: {
-      position: 'absolute',
-      top: '-50%',
-      right: '-50%',
-      width: '200%',
-      height: '200%',
-      background: 'radial-gradient(circle, rgba(220,38,38,0.1) 0%, transparent 70%)',
-      borderRadius: '50%',
-      opacity: 0,
-      transition: 'opacity 0.5s ease',
-      pointerEvents: 'none',
-    },
-    statItemInner: {
-      position: 'relative',
-      zIndex: 1,
-    },
-  };
-
   const stats = [
-    { number: '10', label: 'Weeks Duration', delay: '0.1s' },
-    { number: '8+', label: 'Course Categories', delay: '0.2s' },
-    { number: '50+', label: 'Practical Projects', delay: '0.3s' },
-    { number: '100%', label: 'Hands-on Training', delay: '0.4s' },
+    { number: '10', label: 'Weeks Duration' },
+    { number: '8+', label: 'Course Categories' },
+    { number: '50+', label: 'Practical Projects' },
+    { number: '100%', label: 'Hands-on Training' },
   ];
 
   return (
-    <section style={styles.stats} ref={statsRef}>
-      <div style={styles.container}>
-        <div style={styles.grid}>
+    <section className={`stats ${isVisible ? 'stats-visible' : ''}`} ref={statsRef}>
+      <div className="stats-container">
+        <div className="stats-grid">
           {stats.map((stat, index) => (
-            <div
-              key={index}
-              style={{
-                ...styles.statItem,
-                animationDelay: stat.delay,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, var(--primary-white) 0%, var(--gray-100) 100%)';
-                
-                const number = e.currentTarget.querySelector('.stat-number');
-                if (number) {
-                  number.style.transform = 'scale(1.1)';
-                  number.style.color = '#b91c1c';
-                }
-                
-                const circle = e.currentTarget.querySelector('.stat-circle');
-                if (circle) {
-                  circle.style.opacity = '1';
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
-                e.currentTarget.style.background = 'var(--gray-100)';
-                
-                const number = e.currentTarget.querySelector('.stat-number');
-                if (number) {
-                  number.style.transform = 'scale(1)';
-                  number.style.color = 'var(--primary-red)';
-                }
-                
-                const circle = e.currentTarget.querySelector('.stat-circle');
-                if (circle) {
-                  circle.style.opacity = '0';
-                }
-              }}
-            >
-              <div style={styles.backgroundCircle} className="stat-circle"></div>
-              <div style={styles.statItemInner}>
-                <div style={styles.number} className="stat-number">
-                  {stat.number}
-                </div>
-                <div style={styles.label}>{stat.label}</div>
-              </div>
+            <div key={index} className="stat-item" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="stat-circle"></div>
+              <div className="stat-number">{stat.number}</div>
+              <div className="stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <style>
-        {`
-          @keyframes popIn {
-            0% {
-              opacity: 0;
-              transform: scale(0.8) translateY(20px);
-            }
-            50% {
-              opacity: 0.8;
-              transform: scale(1.05) translateY(-5px);
-            }
-            100% {
-              opacity: 1;
-              transform: scale(1) translateY(0);
-            }
+      <style>{`
+        .stats {
+          padding: clamp(2rem, 6vw, 4rem) 0;
+          background: var(--primary-white);
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          opacity: 0;
+          transform: translateY(50px);
+          transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .stats-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .stats-container {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 clamp(1rem, 5vw, 2rem);
+          width: 100%;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: clamp(1rem, 3vw, 2rem);
+          width: 100%;
+        }
+
+        .stat-item {
+          text-align: center;
+          padding: clamp(1rem, 3vw, 2rem);
+          background: var(--gray-100);
+          border-radius: var(--radius-lg);
+          transition: all var(--transition-base);
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          box-shadow: var(--shadow-sm);
+          opacity: 0;
+          transform: scale(0.9);
+          animation: popIn 0.6s ease forwards;
+        }
+
+        .stat-item:hover {
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: var(--shadow-xl);
+          background: linear-gradient(135deg, var(--primary-white) 0%, var(--gray-100) 100%);
+        }
+
+        .stat-number {
+          font-size: clamp(2.2rem, 5vw, 3.5rem);
+          font-weight: 800;
+          color: var(--primary-red);
+          margin-bottom: 0.5rem;
+          line-height: 1;
+          position: relative;
+          z-index: 2;
+          transition: all var(--transition-base);
+        }
+
+        .stat-item:hover .stat-number {
+          transform: scale(1.1);
+          color: var(--primary-red-hover);
+        }
+
+        .stat-label {
+          font-size: clamp(0.9rem, 2vw, 1.2rem);
+          color: var(--primary-black);
+          font-weight: 600;
+          position: relative;
+          z-index: 2;
+        }
+
+        .stat-circle {
+          position: absolute;
+          top: -50%;
+          right: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(220,38,38,0.1) 0%, transparent 70%);
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+        }
+
+        .stat-item:hover .stat-circle {
+          opacity: 1;
+        }
+
+        @keyframes popIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.05) translateY(-5px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
 
-          /* Large Desktop */
-          @media (min-width: 1400px) {
-            section {
-              padding: 5rem 0 !important;
-            }
-            div[style*="number"] {
-              font-size: 4rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1.4rem !important;
-            }
+          .stat-item {
+            padding: 1.5rem;
+          }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 640px) {
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
           }
 
-          /* Desktop */
-          @media (min-width: 1200px) and (max-width: 1399px) {
-            section {
-              padding: 4rem 0 !important;
-            }
-            div[style*="grid"] {
-              gap: 1.5rem !important;
-            }
+          .stat-item {
+            padding: 1.25rem;
           }
 
-          /* Small Desktop / Large Tablet */
-          @media (min-width: 1024px) and (max-width: 1199px) {
-            section {
-              padding: 3.5rem 0 !important;
-            }
-            div[style*="grid"] {
-              gap: 1.25rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1.5rem !important;
-            }
-            div[style*="number"] {
-              font-size: 3rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1.1rem !important;
-            }
+          .stat-number {
+            font-size: 2.5rem;
           }
 
-          /* Tablet Landscape */
-          @media (min-width: 768px) and (max-width: 1023px) {
-            section {
-              padding: 3rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: repeat(2, 1fr) !important;
-              gap: 1.5rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1.5rem !important;
-            }
-            div[style*="number"] {
-              font-size: 3rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1.1rem !important;
-            }
+          .stat-label {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stat-number {
+            font-size: 2.2rem;
           }
 
-          /* Tablet Portrait */
-          @media (min-width: 640px) and (max-width: 767px) {
-            section {
-              padding: 2.5rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: repeat(2, 1fr) !important;
-              gap: 1.25rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1.25rem !important;
-            }
-            div[style*="number"] {
-              font-size: 2.5rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1rem !important;
-            }
+          .stat-label {
+            font-size: 0.95rem;
+          }
+        }
+
+        @media (max-width: 375px) {
+          .stat-item {
+            padding: 1rem;
           }
 
-          /* Mobile Large */
-          @media (min-width: 481px) and (max-width: 639px) {
-            section {
-              padding: 2rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: repeat(2, 1fr) !important;
-              gap: 1rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1rem !important;
-            }
-            div[style*="number"] {
-              font-size: 2.2rem !important;
-            }
-            div[style*="label"] {
-              font-size: 0.95rem !important;
-            }
+          .stat-number {
+            font-size: 2rem;
           }
+        }
 
-          /* Mobile Medium */
-          @media (min-width: 376px) and (max-width: 480px) {
-            section {
-              padding: 1.5rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 1rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1.25rem !important;
-            }
-            div[style*="number"] {
-              font-size: 2.5rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1rem !important;
-            }
+        /* Landscape Mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+          .stats-grid {
+            grid-template-columns: repeat(4, 1fr);
           }
-
-          /* Mobile Small */
-          @media (max-width: 375px) {
-            section {
-              padding: 1rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: 1fr !important;
-              gap: 0.75rem !important;
-            }
-            div[style*="statItem"] {
-              padding: 1rem !important;
-            }
-            div[style*="number"] {
-              font-size: 2.2rem !important;
-            }
-            div[style*="label"] {
-              font-size: 0.95rem !important;
-            }
-          }
-
-          /* Landscape Mode */
-          @media (max-height: 600px) and (orientation: landscape) {
-            section {
-              padding: 2rem 0 !important;
-            }
-            div[style*="grid"] {
-              grid-template-columns: repeat(4, 1fr) !important;
-            }
-          }
-
-          /* High Resolution Screens */
-          @media (min-width: 1920px) {
-            div[style*="container"] {
-              max-width: 1600px !important;
-            }
-            div[style*="grid"] {
-              gap: 3rem !important;
-            }
-            div[style*="number"] {
-              font-size: 4.5rem !important;
-            }
-            div[style*="label"] {
-              font-size: 1.5rem !important;
-            }
-          }
-
-          /* Reduced Motion */
-          @media (prefers-reduced-motion: reduce) {
-            * {
-              animation: none !important;
-              transition: none !important;
-            }
-          }
-        `}
-      </style>
+        }
+      `}</style>
     </section>
   );
 };
