@@ -11,74 +11,56 @@ const Footer = () => {
   };
 
   const quickLinks = ['About', 'Curriculum', 'Projects', 'Gallery', 'Apply'];
-  const resources = ['FAQ', 'Blog', 'Success Stories', 'Partner With Us', 'Volunteer'];
+  const resources = ['FAQ', 'Blog', 'Stories', 'Partners', 'Volunteer'];
 
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-grid">
-          {/* Brand Column */}
-          <div className="footer-brand">
-            <div className="footer-logo">
-              Kijiji<span className="footer-logo-red">Connect</span>
-            </div>
-            <p className="footer-description">
-              Empowering youth with digital skills for a better future. 
-              Join our March 2026 cohort at Amani Center and transform 
-              your career in just 10 weeks.
-            </p>
-            
-            <div className="footer-social">
-              <a
-                href={socialLinks.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="Facebook"
-              >
-                f
-              </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="LinkedIn"
-              >
-                in
-              </a>
-              <a
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-link"
-                aria-label="Twitter"
-              >
-                𝕏
-              </a>
-            </div>
-
-            <div className="footer-newsletter">
-              <h4 className="footer-newsletter-title">Subscribe to Newsletter</h4>
-              <div className="footer-newsletter-form">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="footer-newsletter-input"
-                />
-                <button className="footer-newsletter-btn">
-                  Subscribe
-                </button>
-              </div>
-            </div>
+        {/* Brand Section - Compact */}
+        <div className="footer-brand">
+          <div className="footer-logo">
+            Kijiji<span className="footer-logo-red">Connect</span>
           </div>
+          <p className="footer-description">
+            Empowering youth with digital skills for a better future.
+          </p>
+          
+          <div className="footer-social">
+            <a
+              href={socialLinks.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Facebook"
+            >
+              f
+            </a>
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="LinkedIn"
+            >
+              in
+            </a>
+            <a
+              href={socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Twitter"
+            >
+              𝕏
+            </a>
+          </div>
+        </div>
 
+        {/* Links Sections - Horizontal on Mobile */}
+        <div className="footer-links-wrapper">
           {/* Quick Links */}
           <div className="footer-links">
-            <h3 className="footer-links-title">
-              Quick Links
-              <span className="footer-links-underline"></span>
-            </h3>
+            <h3 className="footer-links-title">Quick Links</h3>
             <ul className="footer-links-list">
               {quickLinks.map((item) => (
                 <li key={item}>
@@ -92,10 +74,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div className="footer-links">
-            <h3 className="footer-links-title">
-              Resources
-              <span className="footer-links-underline"></span>
-            </h3>
+            <h3 className="footer-links-title">Resources</h3>
             <ul className="footer-links-list">
               {resources.map((item) => (
                 <li key={item}>
@@ -107,46 +86,54 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Compact */}
           <div className="footer-contact">
-            <h3 className="footer-links-title">
-              Contact Us
-              <span className="footer-links-underline"></span>
-            </h3>
+            <h3 className="footer-links-title">Contact</h3>
             <div className="footer-contact-info">
               <div className="footer-contact-item">
                 <span className="footer-contact-icon">📍</span>
-                <span>Amani Center, Tanariver, Kenya</span>
+                <span>Amani Center, Kenya</span>
               </div>
               <div className="footer-contact-item">
                 <span className="footer-contact-icon">📞</span>
                 <a href="tel:+254704331818" className="footer-contact-link">
-                  +254 704331818
+                  +254 704 331 818
                 </a>
               </div>
               <div className="footer-contact-item">
                 <span className="footer-contact-icon">✉️</span>
                 <a href="mailto:kijijiconnectkenya@gmail.com" className="footer-contact-link">
-                  kijijiconnectkenya@gmail.com
+                  Email us
                 </a>
-              </div>
-              <div className="footer-contact-item">
-                <span className="footer-contact-icon">🕒</span>
-                <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Newsletter - Compact */}
+        <div className="footer-newsletter">
+          <h4 className="footer-newsletter-title">Stay Updated</h4>
+          <div className="footer-newsletter-form">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="footer-newsletter-input"
+            />
+            <button className="footer-newsletter-btn">
+              Subscribe
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom Bar - Compact */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © {currentYear} Kijiji Connect Digital Hub. All rights reserved.
+            © {currentYear} Kijiji Connect
           </div>
           <div className="footer-bottom-links">
-            <a href="#" className="footer-bottom-link">Privacy Policy</a>
-            <a href="#" className="footer-bottom-link">Terms of Service</a>
-            <a href="#" className="footer-bottom-link">Cookie Policy</a>
+            <a href="#" className="footer-bottom-link">Privacy</a>
+            <a href="#" className="footer-bottom-link">Terms</a>
+            <a href="#" className="footer-bottom-link">Cookies</a>
           </div>
         </div>
       </div>
@@ -155,29 +142,32 @@ const Footer = () => {
         .footer {
           background: var(--primary-black);
           color: var(--primary-white);
-          padding: clamp(3rem, 8vw, 4rem) 0 clamp(1.5rem, 4vw, 2rem);
+          padding: 2rem 0 1rem;
           width: 100%;
-          overflow-x: hidden;
+          font-size: 0.9rem;
         }
 
         .footer-container {
           max-width: 1280px;
           margin: 0 auto;
-          padding: 0 clamp(1rem, 5vw, 2rem);
+          padding: 0 1rem;
           width: 100%;
         }
 
-        .footer-grid {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1.5fr;
-          gap: clamp(2rem, 5vw, 3rem);
-          margin-bottom: clamp(2rem, 5vw, 3rem);
+        /* Brand Section */
+        .footer-brand {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.5rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .footer-logo {
-          font-size: clamp(1.5rem, 4vw, 1.8rem);
+          font-size: 1.3rem;
           font-weight: bold;
-          margin-bottom: 1rem;
+          white-space: nowrap;
         }
 
         .footer-logo-red {
@@ -186,20 +176,20 @@ const Footer = () => {
 
         .footer-description {
           color: var(--gray-400);
-          line-height: 1.8;
-          margin-bottom: 1.5rem;
-          font-size: clamp(0.9rem, 2vw, 1rem);
+          font-size: 0.8rem;
+          line-height: 1.4;
+          max-width: 250px;
+          margin: 0 1rem;
         }
 
         .footer-social {
           display: flex;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
+          gap: 0.5rem;
         }
 
         .footer-social-link {
-          width: 2.5rem;
-          height: 2.5rem;
+          width: 2rem;
+          height: 2rem;
           background: rgba(255,255,255,0.1);
           border-radius: 50%;
           display: flex;
@@ -207,12 +197,12 @@ const Footer = () => {
           justify-content: center;
           color: var(--primary-white);
           text-decoration: none;
-          transition: all var(--transition-base);
-          font-size: 1.1rem;
+          transition: all 0.2s ease;
+          font-size: 0.9rem;
         }
 
         .footer-social-link:hover {
-          transform: translateY(-3px) scale(1.1);
+          transform: translateY(-2px);
         }
 
         .footer-social-link[aria-label="Facebook"]:hover {
@@ -227,26 +217,107 @@ const Footer = () => {
           background: #000000;
         }
 
-        .footer-newsletter-title {
-          font-size: 1rem;
+        /* Links Wrapper - Horizontal on Mobile */
+        .footer-links-wrapper {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .footer-links-title {
+          font-size: 0.9rem;
           font-weight: 600;
-          margin-bottom: 1rem;
+          margin-bottom: 0.8rem;
           color: var(--primary-white);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .footer-links-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .footer-links-list li {
+          margin-bottom: 0.4rem;
+        }
+
+        .footer-link {
+          color: var(--gray-400);
+          text-decoration: none;
+          transition: color 0.2s ease;
+          font-size: 0.8rem;
+          display: inline-block;
+        }
+
+        .footer-link:hover {
+          color: var(--primary-red);
+        }
+
+        /* Contact Section */
+        .footer-contact-info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .footer-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--gray-400);
+          font-size: 0.8rem;
+        }
+
+        .footer-contact-icon {
+          color: var(--primary-red);
+          font-size: 0.9rem;
+          min-width: 1rem;
+        }
+
+        .footer-contact-link {
+          color: var(--gray-400);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .footer-contact-link:hover {
+          color: var(--primary-red);
+        }
+
+        /* Newsletter */
+        .footer-newsletter {
+          margin-bottom: 1.5rem;
+          padding: 1rem 0;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-newsletter-title {
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-bottom: 0.8rem;
+          color: var(--primary-white);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
 
         .footer-newsletter-form {
           display: flex;
           gap: 0.5rem;
+          max-width: 400px;
         }
 
         .footer-newsletter-input {
           flex: 1;
-          padding: 0.8rem;
+          padding: 0.6rem 0.8rem;
           background: rgba(255,255,255,0.1);
           border: 1px solid rgba(255,255,255,0.2);
-          border-radius: var(--radius-sm);
+          border-radius: 4px;
           color: var(--primary-white);
-          font-size: 0.9rem;
+          font-size: 0.8rem;
         }
 
         .footer-newsletter-input:focus {
@@ -255,194 +326,123 @@ const Footer = () => {
         }
 
         .footer-newsletter-btn {
-          padding: 0.8rem 1.2rem;
+          padding: 0.6rem 1rem;
           background: var(--primary-red);
           color: var(--primary-white);
           border: none;
-          border-radius: var(--radius-sm);
+          border-radius: 4px;
           cursor: pointer;
           font-weight: 600;
-          transition: all var(--transition-base);
+          font-size: 0.8rem;
+          transition: all 0.2s ease;
           white-space: nowrap;
         }
 
         .footer-newsletter-btn:hover {
           background: var(--primary-red-hover);
-          transform: translateY(-2px);
         }
 
-        .footer-links-title {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 1.5rem;
-          color: var(--primary-white);
-          position: relative;
-          padding-bottom: 0.5rem;
-        }
-
-        .footer-links-underline {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 40px;
-          height: 2px;
-          background: var(--primary-red);
-        }
-
-        .footer-links-list {
-          list-style: none;
-          padding: 0;
-        }
-
-        .footer-links-list li {
-          margin-bottom: 0.8rem;
-        }
-
-        .footer-link {
-          color: var(--gray-400);
-          text-decoration: none;
-          transition: all var(--transition-base);
-          display: inline-block;
-          font-size: 1rem;
-        }
-
-        .footer-link:hover {
-          color: var(--primary-red);
-          transform: translateX(5px);
-        }
-
-        .footer-contact-info {
-          color: var(--gray-400);
-        }
-
-        .footer-contact-item {
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-          margin-bottom: 1rem;
-          transition: transform var(--transition-base);
-          font-size: 0.95rem;
-        }
-
-        .footer-contact-item:hover {
-          transform: translateX(5px);
-        }
-
-        .footer-contact-icon {
-          color: var(--primary-red);
-          font-size: 1.1rem;
-          min-width: 1.5rem;
-        }
-
-        .footer-contact-link {
-          color: var(--gray-400);
-          text-decoration: none;
-          transition: color var(--transition-base);
-        }
-
-        .footer-contact-link:hover {
-          color: var(--primary-red);
-        }
-
+        /* Bottom Bar */
         .footer-bottom {
-          border-top: 1px solid rgba(255,255,255,0.1);
-          padding-top: 2rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
           color: var(--gray-500);
-          font-size: 0.9rem;
-          flex-wrap: wrap;
-          gap: 1rem;
+          font-size: 0.75rem;
+          padding-top: 1rem;
         }
 
         .footer-bottom-links {
           display: flex;
-          gap: 2rem;
+          gap: 1rem;
         }
 
         .footer-bottom-link {
           color: var(--gray-500);
           text-decoration: none;
-          transition: color var(--transition-base);
-          font-size: 0.9rem;
+          transition: color 0.2s ease;
+          font-size: 0.75rem;
         }
 
         .footer-bottom-link:hover {
           color: var(--primary-red);
         }
 
-        /* Tablet Styles */
-        @media (max-width: 1024px) {
-          .footer-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-          }
-
-          .footer-brand {
-            grid-column: 1 / -1;
-          }
-        }
-
         /* Mobile Styles */
         @media (max-width: 768px) {
-          .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-
-          .footer-brand,
-          .footer-links,
-          .footer-contact {
+          .footer-brand {
+            flex-direction: column;
             text-align: center;
+            gap: 0.8rem;
           }
 
-          .footer-links-underline {
-            left: 50%;
-            transform: translateX(-50%);
+          .footer-description {
+            margin: 0;
+            max-width: 100%;
           }
 
-          .footer-social {
-            justify-content: center;
+          .footer-links-wrapper {
+            gap: 0.8rem;
+          }
+
+          .footer-links-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+          }
+
+          .footer-link {
+            font-size: 0.75rem;
           }
 
           .footer-contact-item {
-            justify-content: center;
+            font-size: 0.75rem;
           }
 
           .footer-newsletter-form {
-            max-width: 400px;
-            margin: 0 auto;
-          }
-
-          .footer-bottom {
-            flex-direction: column;
-            text-align: center;
-          }
-
-          .footer-bottom-links {
-            justify-content: center;
-            flex-wrap: wrap;
+            max-width: 100%;
           }
         }
 
         @media (max-width: 480px) {
           .footer {
-            padding: 2rem 0 1rem;
+            padding: 1.5rem 0 0.8rem;
           }
 
-          .footer-logo {
-            font-size: 1.5rem;
+          .footer-links-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
           }
 
-          .footer-description {
-            font-size: 0.9rem;
+          .footer-links-title {
+            font-size: 0.8rem;
+            margin-bottom: 0.4rem;
           }
 
-          .footer-social-link {
-            width: 2.2rem;
-            height: 2.2rem;
-            font-size: 1rem;
+          .footer-links-list li {
+            margin-bottom: 0.2rem;
+          }
+
+          .footer-link {
+            font-size: 0.7rem;
+          }
+
+          .footer-contact-item {
+            font-size: 0.7rem;
+            gap: 0.3rem;
+          }
+
+          .footer-contact-icon {
+            font-size: 0.8rem;
+          }
+
+          .footer-newsletter {
+            margin-bottom: 1rem;
+            padding: 0.8rem 0;
+          }
+
+          .footer-newsletter-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
           }
 
           .footer-newsletter-form {
@@ -453,85 +453,31 @@ const Footer = () => {
             width: 100%;
           }
 
-          .footer-links-title {
-            font-size: 1.1rem;
-          }
-
-          .footer-link {
-            font-size: 0.9rem;
-          }
-
-          .footer-contact-item {
-            font-size: 0.85rem;
-          }
-
           .footer-bottom {
-            font-size: 0.8rem;
-          }
-
-          .footer-bottom-links {
-            gap: 1rem;
-          }
-
-          .footer-bottom-link {
-            font-size: 0.8rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: center;
           }
         }
 
         @media (max-width: 375px) {
-          .footer-logo {
-            font-size: 1.3rem;
+          .footer-links-wrapper {
+            gap: 0.3rem;
           }
 
-          .footer-description {
-            font-size: 0.85rem;
+          .footer-link {
+            font-size: 0.65rem;
           }
 
           .footer-contact-item {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.3rem;
-          }
-        }
-
-        /* Landscape Mode */
-        @media (max-height: 600px) and (orientation: landscape) {
-          .footer {
-            padding: 2rem 0;
-          }
-
-          .footer-grid {
-            grid-template-columns: repeat(2, 1fr);
+            font-size: 0.65rem;
           }
         }
 
         /* Touch Device Optimizations */
         @media (hover: none) and (pointer: coarse) {
-          .footer-social-link:hover {
-            transform: none;
-          }
-
-          .footer-link:hover {
-            transform: none;
-          }
-
-          .footer-newsletter-btn:hover {
-            transform: none;
-          }
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-          .footer-social-link,
-          .footer-link,
-          .footer-contact-item,
-          .footer-newsletter-btn {
-            transition: none;
-          }
-
           .footer-social-link:hover,
           .footer-link:hover,
-          .footer-contact-item:hover,
           .footer-newsletter-btn:hover {
             transform: none;
           }
