@@ -8,7 +8,7 @@ const About = () => {
           {/* Content Column */}
           <div className="about-content">
             <span className="about-subtitle">About Us</span>
-            <h2 className="about-title">Kijiji Connect Digital Hub at Amani Center</h2>
+            <h2 className="about-title">Kijiji Connect Digital Hub</h2>
             <p className="about-description">
               We are a community-driven digital hub dedicated to empowering youth 
               with practical tech skills. Our March 2026 cohort offers intensive 
@@ -55,9 +55,22 @@ const About = () => {
       <style>{`
         .about {
           padding: clamp(3rem, 8vw, 5rem) 0;
-          background: var(--gray-100);
+          background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
           width: 100%;
           overflow-x: hidden;
+          position: relative;
+        }
+
+        /* Add subtle pattern overlay */
+        .about::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+          pointer-events: none;
         }
 
         .about-container {
@@ -65,6 +78,8 @@ const About = () => {
           margin: 0 auto;
           padding: 0 clamp(1rem, 5vw, 2rem);
           width: 100%;
+          position: relative;
+          z-index: 1;
         }
 
         .about-grid {
@@ -75,7 +90,7 @@ const About = () => {
         }
 
         .about-content {
-          color: var(--primary-black);
+          color: var(--primary-white);
         }
 
         .about-subtitle {
@@ -86,6 +101,17 @@ const About = () => {
           letter-spacing: 2px;
           margin-bottom: 1rem;
           display: inline-block;
+          position: relative;
+        }
+
+        .about-subtitle::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 40px;
+          height: 2px;
+          background: var(--primary-red);
         }
 
         .about-title {
@@ -93,11 +119,12 @@ const About = () => {
           font-weight: 700;
           margin-bottom: 1.5rem;
           line-height: 1.3;
+          color: var(--primary-white);
         }
 
         .about-description {
           font-size: clamp(0.95rem, 2vw, 1.1rem);
-          color: var(--gray-600);
+          color: rgba(255,255,255,0.8);
           margin-bottom: 2rem;
           line-height: 1.8;
         }
@@ -127,11 +154,23 @@ const About = () => {
           font-size: clamp(0.9rem, 2vw, 1.2rem);
           flex-shrink: 0;
           transition: all var(--transition-base);
+          box-shadow: 0 4px 10px rgba(220,38,38,0.3);
         }
 
         .about-feature-text {
           font-size: clamp(0.9rem, 2vw, 1rem);
           font-weight: 500;
+          color: rgba(255,255,255,0.9);
+        }
+
+        .about-feature:hover .about-feature-icon {
+          transform: scale(1.1);
+          background: var(--primary-red-hover);
+          box-shadow: 0 6px 15px rgba(220,38,38,0.4);
+        }
+
+        .about-feature:hover .about-feature-text {
+          color: var(--primary-white);
         }
 
         .about-image-container {
@@ -147,7 +186,7 @@ const About = () => {
           max-width: 550px;
           overflow: hidden;
           border-radius: clamp(0.75rem, 2vw, 1rem);
-          box-shadow: var(--shadow-xl);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .about-image {
@@ -170,9 +209,11 @@ const About = () => {
           padding: clamp(1rem, 2.5vw, 1.5rem);
           border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
           text-align: center;
-          box-shadow: 0 10px 30px rgba(220,38,38,0.3);
+          box-shadow: 0 10px 30px rgba(220,38,38,0.4);
           animation: pulse 2s infinite;
           min-width: 80px;
+          backdrop-filter: blur(5px);
+          border: 1px solid rgba(255,255,255,0.1);
         }
 
         .about-badge-number {
@@ -180,21 +221,14 @@ const About = () => {
           font-weight: 800;
           line-height: 1;
           margin-bottom: 0.25rem;
+          color: var(--primary-white);
         }
 
         .about-badge-text {
           font-size: clamp(0.7rem, 1.5vw, 0.9rem);
           opacity: 0.9;
           white-space: nowrap;
-        }
-
-        .about-feature:hover .about-feature-icon {
-          transform: scale(1.1);
-          background: var(--primary-red-hover);
-        }
-
-        .about-feature:hover .about-feature-text {
-          color: var(--primary-red);
+          color: rgba(255,255,255,0.9);
         }
 
         @keyframes pulse {
@@ -210,6 +244,11 @@ const About = () => {
 
           .about-image-wrapper {
             max-width: 450px;
+          }
+
+          .about-subtitle::after {
+            left: 0;
+            transform: none;
           }
         }
 
@@ -246,6 +285,11 @@ const About = () => {
             padding: 0 1rem;
           }
 
+          .about-subtitle::after {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
           .about-features {
             max-width: 400px;
             margin: 0 auto;
@@ -271,10 +315,18 @@ const About = () => {
             font-size: 1.6rem;
           }
 
+          .about-description {
+            font-size: 0.95rem;
+          }
+
           .about-features {
             grid-template-columns: 1fr;
             gap: 0.8rem;
             max-width: 280px;
+          }
+
+          .about-feature-text {
+            font-size: 0.9rem;
           }
 
           .about-image-badge {
@@ -297,7 +349,11 @@ const About = () => {
           }
 
           .about-description {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+          }
+
+          .about-feature-text {
+            font-size: 0.85rem;
           }
 
           .about-image-badge {
@@ -320,6 +376,9 @@ const About = () => {
           .about-feature:hover .about-feature-icon {
             transform: none;
           }
+          .about-feature:hover .about-feature-text {
+            color: rgba(255,255,255,0.9);
+          }
           .about-image-wrapper:hover .about-image {
             transform: none;
           }
@@ -333,6 +392,13 @@ const About = () => {
           .about-image,
           .about-feature-icon {
             transition: none;
+          }
+        }
+
+        /* Dark Mode Enhancement */
+        @media (prefers-color-scheme: dark) {
+          .about {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
           }
         }
       `}</style>
