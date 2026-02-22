@@ -11,6 +11,8 @@ import Testimonials from './components/Testimonials';
 import Apply from './components/Apply';
 import Partners from './components/Partners';
 import Footer from './components/Footer';
+import AnimatedSection from './components/AnimatedSection';
+import ScrollProgress from './components/ScrollProgress';
 import './App.css';
 
 function App() {
@@ -58,21 +60,60 @@ function App() {
     };
   }, []);
 
+  // Initialize intersection observer for older browsers
+  useEffect(() => {
+    if (!window.IntersectionObserver) {
+      // Fallback for older browsers
+      const elements = document.querySelectorAll('.fade-in-section');
+      elements.forEach(element => {
+        element.classList.add('is-visible');
+      });
+    }
+  }, []);
+
   return (
     <div className="app">
+      <ScrollProgress />
       <Header />
       
       <main>
         <Hero />
-        <Stats />
-        <About />
-        <Curriculum />
-        <WeeklyBreakdown />
-        <StudentProjects />
-        <Gallery />
-        <Testimonials />
-        <Apply />
-        <Partners />
+        
+        <AnimatedSection animation="fade-in-section">
+          <Stats />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-left" delay={2}>
+          <About />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-scale">
+          <Curriculum />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-right">
+          <WeeklyBreakdown />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section">
+          <StudentProjects />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-scale">
+          <Gallery />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-left">
+          <Testimonials />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section fade-in-right">
+          <Apply />
+        </AnimatedSection>
+
+        <AnimatedSection animation="fade-in-section">
+          <Partners />
+        </AnimatedSection>
       </main>
       
       <Footer />

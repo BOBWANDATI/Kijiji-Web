@@ -220,6 +220,131 @@ main {
   50% { transform: scale(1.05); }
 }
 
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+  will-change: opacity, transform, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+/* Different animation variants */
+.fade-in-section.fade-in-left {
+  transform: translateX(-100px);
+}
+
+.fade-in-section.fade-in-right {
+  transform: translateX(100px);
+}
+
+.fade-in-section.fade-in-scale {
+  transform: scale(0.8);
+}
+
+.fade-in-section.fade-in-left.is-visible,
+.fade-in-section.fade-in-right.is-visible,
+.fade-in-section.fade-in-scale.is-visible {
+  transform: translateX(0) scale(1);
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--child-index) * 0.1s);
+}
+
+.stagger-children.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add animation delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* Enhanced card animations */
+.animate-card {
+  transition: all 0.3s ease;
+}
+
+.animate-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 9999;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--primary-red);
+  transition: width 0.1s ease;
+}
+
+/* Section entrance animations */
+@keyframes sectionEntrance {
+  0% {
+    opacity: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.section-entrance {
+  animation: sectionEntrance 1s ease forwards;
+}
+
+/* Parallax effect */
+.parallax {
+  transition: transform 0.1s linear;
+}
+
+/* Floating animation for cards */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float-slow 3s ease-in-out infinite;
+}
+
+/* Hero specific animations */
+.hero-cta {
+  animation: float-slow 3s ease-in-out infinite;
+}
+
+.hero-image {
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
 /* ===== UTILITY CLASSES ===== */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
