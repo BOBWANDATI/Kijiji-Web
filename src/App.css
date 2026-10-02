@@ -1,7 +1,5 @@
 /* ===== RESET & BASE ===== */
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,7 +13,7 @@
   --primary-black: #111111;
   --primary-green: #10b981;
   --primary-green-hover: #059669;
-
+  
   /* Grayscale */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -27,46 +25,30 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-
+  
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-
+  
   /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-full: 9999px;
-
+  
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-slow: 0.5s ease;
-
+  
   /* Z-Index */
   --z-header: 1000;
   --z-modal: 2000;
   --z-overlay: 3000;
-
-  /* Fluid Typography & Spacing */
-  --fs-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.875rem);
-  --fs-sm: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
-  --fs-base: clamp(0.9rem, 0.85rem + 0.3vw, 1.125rem);
-  --fs-md: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
-  --fs-lg: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
-  --fs-xl: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
-  --fs-2xl: clamp(1.8rem, 1.5rem + 1.5vw, 3rem);
-  --fs-3xl: clamp(2.2rem, 1.8rem + 2vw, 4rem);
-
-  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
-  --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
-  --space-md: clamp(1rem, 0.8rem + 1vw, 2rem);
-  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
-  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 5rem);
 }
 
 html {
@@ -83,17 +65,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--gray-900);
-  line-height: 1.6;
+  line-height: 1.5;
   overflow-x: hidden;
   width: 100%;
   min-height: 100%;
-  font-size: var(--fs-base);
+  min-height: 100dvh;
 }
 
-/* Ensure the app container fills the viewport */
 .app {
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -101,28 +82,26 @@ body {
 }
 
 main {
-  flex: 1 0 auto; /* Grow to fill available space */
+  flex: 1 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Sections should expand to fill the screen */
+/* Sections fill available space */
 .section {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: var(--space-xl) 0;
 }
 
-/* Container that adapts to all screens */
 .container {
-  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 2.5rem);
+  padding: 0 clamp(1rem, 5vw, 2rem);
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -130,9 +109,9 @@ main {
 
 /* ===== TYPOGRAPHY ===== */
 .section-title {
-  font-size: var(--fs-2xl);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: var(--space-lg);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
   text-align: center;
   color: var(--primary-black);
   position: relative;
@@ -154,9 +133,7 @@ main {
 
 /* ===== BUTTONS ===== */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
@@ -164,12 +141,9 @@ main {
   transition: all var(--transition-base);
   cursor: pointer;
   border: none;
-  font-size: var(--fs-sm);
+  font-size: 1rem;
   text-align: center;
   white-space: nowrap;
-  min-height: 44px;
-  min-width: 44px;
-  line-height: 1.4;
 }
 
 .btn-primary {
@@ -264,11 +238,6 @@ main {
   50% { transform: scale(1.05); }
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 /* ===== SCROLL ANIMATIONS ===== */
 .fade-in-section {
   opacity: 0;
@@ -284,6 +253,7 @@ main {
   visibility: visible;
 }
 
+/* Different animation variants */
 .fade-in-section.fade-in-left {
   transform: translateX(-100px);
 }
@@ -371,6 +341,11 @@ main {
 }
 
 /* Floating animation for cards */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 .float-animation {
   animation: float-slow 3s ease-in-out infinite;
 }
@@ -399,31 +374,26 @@ main {
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between; }
 .flex-wrap { flex-wrap: wrap; }
-.flex-1 { flex: 1; }
-.gap-1 { gap: var(--space-xs); }
-.gap-2 { gap: var(--space-sm); }
-.gap-3 { gap: var(--space-md); }
-.gap-4 { gap: var(--space-lg); }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }
 
 .w-full { width: 100%; }
 .h-full { height: 100%; }
-.min-h-screen { min-height: 100vh; min-height: 100dvh; }
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
 /* 4K and Ultra-wide (2560px+) */
 @media (min-width: 2560px) {
-  html { font-size: 19px; }
-  .container { max-width: 2200px; }
-  :root {
-    --fs-3xl: clamp(3rem, 2.5rem + 2vw, 5rem);
-  }
+  html { font-size: 18px; }
+  .container { max-width: 2000px; }
 }
 
 /* Desktop Large (1920px) */
 @media (min-width: 1920px) {
-  html { font-size: 18px; }
-  .container { max-width: 1800px; }
+  html { font-size: 17px; }
+  .container { max-width: 1600px; }
 }
 
 /* Desktop (1440px) */
@@ -439,69 +409,59 @@ main {
 /* Laptop (1024px - 1199px) */
 @media (min-width: 1024px) and (max-width: 1199px) {
   .container { max-width: 960px; }
-  html { font-size: 16px; }
+  html { font-size: 15px; }
 }
 
 /* Tablet Landscape (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .container { max-width: 720px; }
-  html { font-size: 15px; }
-  .section-title { font-size: var(--fs-xl); margin-bottom: var(--space-md); }
+  html { font-size: 14px; }
+  .section-title { font-size: 2.2rem; margin-bottom: 2.5rem; }
 }
 
 /* Tablet Portrait (640px - 767px) */
 @media (min-width: 640px) and (max-width: 767px) {
   .container { max-width: 600px; padding: 0 1.5rem; }
-  html { font-size: 15px; }
-  .section-title { font-size: var(--fs-lg); margin-bottom: var(--space-md); }
+  html { font-size: 14px; }
+  .section-title { font-size: 2rem; margin-bottom: 2rem; }
   .section-title::after { width: 60px; height: 3px; }
-  .section { padding: var(--space-lg) 0; }
 }
 
 /* Mobile Large (481px - 639px) */
 @media (min-width: 481px) and (max-width: 639px) {
   .container { max-width: 100%; padding: 0 1.25rem; }
-  html { font-size: 15px; }
-  .section-title { font-size: var(--fs-lg); margin-bottom: var(--space-sm); }
-  .section-title::after { width: 50px; height: 3px; }
-  .section { padding: var(--space-md) 0; }
-  .btn { padding: 0.65rem 1.2rem; font-size: var(--fs-xs); }
+  html { font-size: 14px; }
+  .section-title { font-size: 1.8rem; margin-bottom: 1.8rem; }
+  .section-title::after { width: 50px; }
 }
 
 /* Mobile Medium (376px - 480px) */
 @media (min-width: 376px) and (max-width: 480px) {
   .container { padding: 0 1rem; }
-  html { font-size: 14px; }
-  .section-title { font-size: var(--fs-md); margin-bottom: var(--space-sm); }
+  html { font-size: 13px; }
+  .section-title { font-size: 1.6rem; margin-bottom: 1.5rem; }
   .section-title::after { width: 45px; height: 3px; }
-  .section { padding: var(--space-md) 0; }
-  .btn { padding: 0.6rem 1rem; font-size: var(--fs-xs); min-height: 42px; }
 }
 
 /* Mobile Small (321px - 375px) */
 @media (min-width: 321px) and (max-width: 375px) {
   .container { padding: 0 0.875rem; }
-  html { font-size: 13px; }
-  .section-title { font-size: var(--fs-sm); margin-bottom: var(--space-xs); }
-  .section-title::after { width: 40px; height: 2px; }
-  .section { padding: var(--space-sm) 0; }
-  .btn { padding: 0.5rem 0.9rem; font-size: 0.75rem; min-height: 40px; }
+  html { font-size: 12px; }
+  .section-title { font-size: 1.5rem; margin-bottom: 1.4rem; }
+  .section-title::after { width: 40px; }
 }
 
 /* Mobile Extra Small (320px and below) */
 @media (max-width: 320px) {
   .container { padding: 0 0.75rem; }
-  html { font-size: 12px; }
-  .section-title { font-size: 1.2rem; margin-bottom: var(--space-xs); }
+  html { font-size: 11px; }
+  .section-title { font-size: 1.4rem; margin-bottom: 1.2rem; }
   .section-title::after { width: 35px; height: 2px; }
-  .section { padding: var(--space-xs) 0; }
-  .btn { padding: 0.5rem 0.8rem; font-size: 0.7rem; min-height: 38px; }
 }
 
 /* Landscape Mode */
 @media (max-height: 600px) and (orientation: landscape) {
   .hero-section { min-height: 100vh !important; }
-  .section { padding: var(--space-sm) 0; }
 }
 
 /* Touch Device Optimizations */
@@ -512,12 +472,12 @@ main {
   .btn-green:hover {
     transform: none !important;
   }
-
+  
   button, a, .btn, [role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
-
+  
   input, select, textarea {
     font-size: 16px !important;
   }
@@ -533,7 +493,7 @@ main {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
+  
   .btn-green {
     animation: none !important;
   }
@@ -548,11 +508,11 @@ main {
     --gray-600: #9ca3af;
     --gray-900: #f3f4f6;
   }
-
+  
   body {
     background-color: #111827;
   }
-
+  
   .section-title {
     color: var(--primary-white);
   }
@@ -578,12 +538,12 @@ main {
   .apply-section {
     display: none !important;
   }
-
+  
   .section {
     page-break-inside: avoid;
     padding: 1rem 0 !important;
   }
-
+  
   .section-title::after {
     background: #000 !important;
   }
@@ -604,16 +564,16 @@ main {
     width: 8px;
     height: 8px;
   }
-
+  
   ::-webkit-scrollbar-track {
     background: var(--gray-100);
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background: var(--primary-red);
     border-radius: 4px;
   }
-
+  
   ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-red-hover);
   }
@@ -624,7 +584,7 @@ main {
     width: 3px;
     height: 3px;
   }
-
+  
   ::-webkit-scrollbar-thumb {
     background: var(--primary-red);
   }
