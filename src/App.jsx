@@ -43,11 +43,13 @@ function App() {
     return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
-  // Handle viewport height for mobile browsers
+  // Handle viewport height for mobile browsers (fills whole screen)
   useEffect(() => {
     const setVh = () => {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+      // Also set a direct full-height property for the app container
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
     };
 
     setVh();
@@ -71,12 +73,31 @@ function App() {
     }
   }, []);
 
+  // Ensure the app fills the entire screen on mount and resize
+  useEffect(() => {
+    const ensureFullHeight = () => {
+      const app = document.querySelector('.app');
+      if (app) {
+        app.style.minHeight = `${window.innerHeight}px`;
+      }
+    };
+
+    ensureFullHeight();
+    window.addEventListener('resize', ensureFullHeight);
+    window.addEventListener('orientationchange', ensureFullHeight);
+
+    return () => {
+      window.removeEventListener('resize', ensureFullHeight);
+      window.removeEventListener('orientationchange', ensureFullHeight);
+    };
+  }, []);
+
   return (
     <div className="app">
       <ScrollProgress />
       <Header />
       
-      <main>
+      <main className="main-content">
         <Hero />
         
         <AnimatedSection animation="fade-in-section">
