@@ -589,3 +589,24 @@ main {
     background: var(--primary-red);
   }
 }
+
+/* TEMPORARY DEBUG - paste at the top of App.css */
+.app {
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+.app > main {
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+.app > main > * {
+  flex: 1 0 auto !important;
+  width: 100% !important;
+}
